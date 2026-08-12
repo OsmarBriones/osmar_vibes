@@ -1,0 +1,18 @@
+# Local tooling (Godot binary etc.) - never committed, each user installs their own
+.tools/
+
+# Godot 4 editor cache
+game/.godot/
+
+# Godot import metadata for generated/re-importable assets is fine to commit,
+# but editor-local mono/build artifacts are not
+game/.mono/
+game/mono_crash.*.json
+
+# GUT test run artifacts
+game/tests/results/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.tmp
