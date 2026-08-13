@@ -14,7 +14,7 @@ del juego vive en `docs/`.
 - `docs/coding-standards.md` — el único estilo de código válido en este proyecto (tipado, orden
   de miembros, nomenclatura, uso de señales/autoloads, testeabilidad, etc.). Se sigue al pie de
   la letra, no como sugerencia.
-- `docs/ARCHITECTURE.md` — cómo se descompone la lógica del juego en sistemas (manager global vs
+- `docs/architecture.md` — cómo se descompone la lógica del juego en sistemas (manager global vs
   componente por entidad) y cómo se comunican entre sí. Define el CÓMO se organiza, no el QUÉ
   sistemas tiene el juego (eso lo define `docs/gdd.md`).
 - `docs/blockers.md` — ambigüedades reales del GDD que `/start-phase` no puede resolver por su
@@ -31,9 +31,9 @@ parte.
 game/
   addons/gut/           # framework de testing, no tocar
   scenes/               # archivos .tscn
-    components/         # componentes por entidad (ver docs/ARCHITECTURE.md)
+    components/         # componentes por entidad (ver docs/architecture.md)
   scripts/              # archivos .gd que no son de un nodo específico (autoloads, utils, resources)
-    systems/            # managers globales/autoload (ver docs/ARCHITECTURE.md)
+    systems/            # managers globales/autoload (ver docs/architecture.md)
   assets/               # sprites, audio, fuentes
   tests/unit/           # un test_<feature>.gd por área funcional, extends GutTest
 ```
