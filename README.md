@@ -43,9 +43,10 @@ game/
   assets/         # sprites, audio
   tests/unit/     # tests GUT, uno por área funcional
 docs/
-  gdd.md          # documento de diseño del juego (generado por /new-game)
-  todo.md         # fases de desarrollo (generado por /new-game)
-  test-cases.md   # casos de prueba por fase (generado por /new-game)
+  gdd.md               # documento de diseño del juego (generado por /new-game)
+  todo.md              # fases de desarrollo (generado por /new-game)
+  test-cases.md        # casos de prueba por fase (generado por /new-game)
+  coding-standards.md  # el estilo de código GDScript del proyecto
 ```
 
 ## Testing

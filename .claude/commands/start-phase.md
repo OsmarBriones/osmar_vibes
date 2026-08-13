@@ -22,9 +22,10 @@ Lee también la sección correspondiente en `docs/test-cases.md`: esos casos son
 
 ### 2. Implementar
 
-Implementa cada tarea pendiente de la fase en `game/`, siguiendo las convenciones de
-`.claude/CLAUDE.md` (estructura de carpetas, estilo GDScript). Consulta `docs/gdd.md` cuando
-necesites detalles de diseño (valores, comportamiento esperado, etc.) en vez de inventarlos.
+Implementa cada tarea pendiente de la fase en `game/`, siguiendo la estructura de carpetas de
+`.claude/CLAUDE.md` y, sin excepción, el estilo de código de `docs/coding-standards.md`. Consulta
+`docs/gdd.md` cuando necesites detalles de diseño (valores, comportamiento esperado, etc.) en vez
+de inventarlos.
 
 No implementes tareas de fases futuras todavía, aunque sea tentador.
 

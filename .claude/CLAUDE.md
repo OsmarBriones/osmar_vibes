@@ -11,6 +11,9 @@ del juego vive en `docs/`.
 - `docs/todo.md` — fases de desarrollo, cada una con checklist de tareas (`- [ ]` / `- [x]`).
 - `docs/test-cases.md` — historias testables por fase (afirmaciones desde la perspectiva del
   jugador, pero 100% verificables por código), mapeadas 1:1 a tests de GUT.
+- `docs/coding-standards.md` — el único estilo de código válido en este proyecto (tipado, orden
+  de miembros, nomenclatura, uso de señales/autoloads, testeabilidad, etc.). Se sigue al pie de
+  la letra, no como sugerencia.
 
 ## Estructura de `game/`
 
@@ -25,10 +28,8 @@ game/
 
 - Cada escena con lógica propia tiene su script adjunto en la misma carpeta que la escena (no en
   `scripts/`), salvo utilidades/autoloads compartidos.
-- Nombres de archivo: `snake_case.gd`, `snake_case.tscn`.
-- Nombres de clases/nodos en el árbol de escena: `PascalCase`.
-- Funciones y variables GDScript: `snake_case`. Constantes: `SCREAMING_SNAKE_CASE`.
-- Señales en pasado o como evento (`health_depleted`, no `on_health_depleted` al declararlas).
+- El estilo del código GDScript (tipado, nomenclatura, orden de miembros, uso de señales,
+  performance, etc.) está definido en `docs/coding-standards.md` — no se improvisa.
 
 ## Testing (GUT)
 
