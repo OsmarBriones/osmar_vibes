@@ -14,6 +14,13 @@ del juego vive en `docs/`.
 - `docs/coding-standards.md` — el único estilo de código válido en este proyecto (tipado, orden
   de miembros, nomenclatura, uso de señales/autoloads, testeabilidad, etc.). Se sigue al pie de
   la letra, no como sugerencia.
+- `docs/blockers.md` — ambigüedades reales del GDD que `/start-phase` no puede resolver por su
+  cuenta. No existe hasta que hace falta; se crea la primera vez que surge un blocker.
+
+Una tarea de `docs/todo.md` marcada `(HUMAN)` tiene una parte que solo el usuario puede terminar
+(arte final, audio con licencia, una decisión de negocio). `/start-phase` implementa la parte
+agent-doable con un placeholder y deja el checkbox sin marcar hasta que el usuario complete su
+parte.
 
 ## Estructura de `game/`
 

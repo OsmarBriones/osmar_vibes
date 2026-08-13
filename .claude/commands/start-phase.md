@@ -20,6 +20,17 @@ Si todas las fases están completas, informa al usuario que el proyecto está te
 Lee también la sección correspondiente en `docs/test-cases.md`: esos casos son el criterio de
 "hecho" para esta fase, no una sugerencia.
 
+Si existe `docs/blockers.md` con una entrada de esta fase, revisá si ya se puede resolver (el
+usuario la respondió en el chat, o actualizó `docs/gdd.md`). Si sí, resolvé la tarea con esa
+respuesta y borrá la entrada. Si sigue sin respuesta, saltá esa tarea puntual de nuevo sin
+volver a preguntar en cada corrida — ya está registrada.
+
+Si alguna tarea de la fase termina en la marca `(HUMAN)`, significa que tiene una parte que solo
+el usuario puede completar (un asset de arte final, audio con licencia, una decisión de negocio).
+No te la saltees: implementa la parte que sí es agent-doable con un placeholder razonable (una
+figura simple, un sonido generado, un valor por defecto) y trátala como pendiente en el paso 6 —
+nunca la marques como completada vos mismo.
+
 ### 2. Implementar
 
 Implementa cada tarea pendiente de la fase en `game/`, siguiendo la estructura de carpetas de
@@ -29,10 +40,28 @@ de inventarlos.
 
 No implementes tareas de fases futuras todavía, aunque sea tentador.
 
+Si te encontrás con una ambigüedad real del GDD — no un detalle menor que puedas decidir con
+criterio razonable, sino algo que cambia sustancialmente el resultado y que `docs/gdd.md` no
+resuelve ni contradice — no inventes una respuesta. Agrega una entrada a `docs/blockers.md`
+(créalo si no existe) con este formato:
+
+```markdown
+## Fase N: <título de la tarea bloqueada>
+**Pregunta:** <la ambigüedad concreta, en una o dos frases>
+**Por qué bloquea:** <qué decisión depende de esto>
+```
+
+y seguí con el resto de tareas de la fase que no dependan de esa duda. Si *toda* la fase depende
+de esa ambigüedad, detenete ahí, no commitees nada a medias, y avisale al usuario que hay un
+blocker que resolver antes de continuar. Una vez que el usuario responda la pregunta (en el chat
+o editando `docs/gdd.md` directamente), la siguiente corrida de `/start-phase` debe resolver la
+tarea con esa respuesta y borrar la entrada de `docs/blockers.md`.
+
 ### 3. Escribir/actualizar tests
 
 Por cada test case de `docs/test-cases.md` de esta fase, crea o actualiza el test GUT
-correspondiente en `game/tests/unit/`, siguiendo la convención `test_<feature>.gd`.
+correspondiente en `game/tests/unit/`, siguiendo la convención `test_<feature>.gd`. Salteá los
+test cases que dependan de una tarea bloqueada o pendiente de `(HUMAN)`.
 
 ### 4. Correr los tests
 
@@ -48,16 +77,27 @@ Si es la primera ejecución en esta sesión y `game/.godot/` no existe todavía,
 Si algún test falla, corrige la implementación y vuelve a correr los tests. Repite hasta que
 todos pasen. No avances al siguiente paso con tests en rojo.
 
-### 5. Actualizar checklists
+### 5. Revisión de estilo
 
-Una vez que todos los tests de la fase pasan:
-- Marca todas las tareas de la fase como completadas en `docs/todo.md` (`- [x]`).
-- Marca todos los test cases de la fase como completados en `docs/test-cases.md` (`- [x]`).
+Antes de tocar los checklists o commitear, revisa el diff de esta fase (`game/` solamente) contra
+`docs/coding-standards.md` punto por punto. Los tests validan comportamiento, no estilo — esta
+revisión es la única que atrapa violaciones de tipado, nomenclatura, orden de miembros, uso de
+señales/autoloads, etc. Corrige cualquier violación que encuentres y vuelve a correr los tests del
+paso 4 si el fix tocó lógica.
 
-### 6. Commit
+### 6. Actualizar checklists
+
+Marca como completadas (`- [x]`) únicamente las tareas y test cases que de verdad terminaste y
+pasaron sus tests:
+- En `docs/todo.md`: todas las tareas de la fase, EXCEPTO las que quedaron bloqueadas (`docs/blockers.md`)
+  o las `(HUMAN)` cuya parte humana no se completó — esas quedan en `- [ ]`.
+- En `docs/test-cases.md`: los test cases correspondientes a las tareas que sí se cerraron.
+
+### 7. Commit
 
 Haz un commit que incluya únicamente los cambios de esta fase (código del juego, tests, y las
-actualizaciones a `todo.md`/`test-cases.md`), con el formato definido en `.claude/CLAUDE.md`:
+actualizaciones a `todo.md`/`test-cases.md`/`docs/blockers.md`), con el formato definido en
+`.claude/CLAUDE.md`:
 
 ```
 Fase N: <título de la fase>
@@ -65,8 +105,12 @@ Fase N: <título de la fase>
 <resumen breve de qué se implementó>
 ```
 
-### 7. Resumen final
+Si la fase quedó parcialmente completa (por tareas `(HUMAN)` pendientes o blockers), dilo
+explícitamente en el cuerpo del commit: qué quedó pendiente y por qué.
+
+### 8. Resumen final
 
 Reporta al usuario: qué fase se completó, qué tests pasaron, y si el proyecto tiene fases
-pendientes o ya está completo. No arranques automáticamente la siguiente fase — eso requiere
-volver a correr `/start-phase`.
+pendientes o ya está completo. Si quedaron tareas `(HUMAN)` pendientes o se registró algo en
+`docs/blockers.md`, dilo explícitamente y qué necesita el usuario para desbloquearlo. No
+arranques automáticamente la siguiente fase — eso requiere volver a correr `/start-phase`.

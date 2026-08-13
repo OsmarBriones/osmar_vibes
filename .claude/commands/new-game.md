@@ -98,6 +98,11 @@ Crea (o sobrescribe) `docs/todo.md` con fases numeradas. Reglas obligatorias:
 - Cada fase siguiente agrega una capa completa (una mecánica más, contenido, pulido, UI, etc.), nunca
   deja algo a medias entre fases.
 - Cada fase tiene una lista de tareas concretas y verificables con checkboxes markdown.
+- Si una tarea incluye algo que solo el usuario puede terminar (un asset de arte final, audio con
+  licencia, una decisión de negocio/monetización), márcala con `(HUMAN)` al final de la línea.
+  `/start-phase` va a implementar la parte agent-doable (un placeholder razonable) y dejar el
+  checkbox sin marcar hasta que el usuario complete su parte. No abuses de esta marca — para el
+  alcance de un MVP casi todo (incluyendo arte y audio placeholder) es agent-doable.
 - Formato:
 
 ```markdown
@@ -105,7 +110,7 @@ Crea (o sobrescribe) `docs/todo.md` con fases numeradas. Reglas obligatorias:
 
 ## Fase 1: Vertical slice jugable
 - [ ] Tarea concreta
-- [ ] Tarea concreta
+- [ ] Tarea con un asset final pendiente (HUMAN)
 
 ## Fase 2: <nombre>
 - [ ] ...
