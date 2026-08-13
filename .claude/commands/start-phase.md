@@ -82,7 +82,10 @@ todos pasen. No avances al siguiente paso con tests en rojo.
 Antes de tocar los checklists o commitear, revisa el diff de esta fase (`game/` solamente) contra
 `docs/coding-standards.md` punto por punto. Los tests validan comportamiento, no estilo — esta
 revisión es la única que atrapa violaciones de tipado, nomenclatura, orden de miembros, uso de
-señales/autoloads, etc. Corrige cualquier violación que encuentres y vuelve a correr los tests del
+señales/autoloads, etc. Presta especial atención a las dos reglas duras del documento: ningún
+archivo `.gd` tocado en esta fase supera 100 caracteres por línea ni 300 líneas totales — si un
+archivo pasa el límite de líneas, separalo en módulos según responsabilidad antes de continuar,
+no lo dejes pasar. Corrige cualquier violación que encuentres y vuelve a correr los tests del
 paso 4 si el fix tocó lógica.
 
 ### 6. Actualizar checklists

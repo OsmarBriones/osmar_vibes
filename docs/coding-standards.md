@@ -125,4 +125,17 @@ una relación de escena resoluble con señales o referencias directas.
 
 - Indentación con tabs, nunca espacios (convención oficial de GDScript).
 - Una declaración por línea, sin `;` para separar statements.
-- ~100 caracteres por línea como guía, no una regla dura que rompa legibilidad.
+- **Máximo 100 caracteres por línea. Regla dura, sin excepciones** — si una línea no entra,
+  se reestructura (variables intermedias, quiebre de la expresión), nunca se deja pasar.
+
+## 12. Tamaño de archivo
+
+- **Máximo 300 líneas por archivo `.gd`. Regla dura.** Un archivo que se acerca a ese límite es
+  una señal de que está haciendo más de una cosa — no un caso a ignorar ni a resolver comprimiendo
+  código para que "entre".
+- Al llegar al límite, separar en módulos según responsabilidad: extraer una clase interna a su
+  propio archivo con `class_name`, mover un sub-sistema completo a un script separado que el
+  original usa por composición, o partir la escena en sub-escenas más chicas con su propio script.
+  Nunca partir un archivo a la mitad de forma arbitraria solo para bajar el conteo de líneas.
+- Este límite aplica por archivo, no por clase: si una clase legítimamente necesita más de 300
+  líneas, es una señal de que esa clase misma debe dividirse en colaboradores más chicos.
