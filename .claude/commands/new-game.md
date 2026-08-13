@@ -20,12 +20,31 @@ archivo en este caso.
 
 Sigue estos pasos en orden:
 
-### 1. Clarificación mínima
+### 1. Checklist de idea lista
 
-Si hay ambigüedades importantes que cambiarían sustancialmente el alcance o las mecánicas core
-(por ejemplo: cámara 2D vs 3D, single player vs multiplayer, plataformas objetivo), haz como
-máximo 3-4 preguntas concretas usando la herramienta de preguntas al usuario. Si la idea ya es
-razonablemente clara, no preguntes nada y avanza directo — prioriza no bloquear el flujo.
+Una idea está lista para generar el GDD cuando estos 5 puntos tienen una respuesta concreta.
+Este es el único criterio de "listo" — no busques más precisión que esta, el resto se resuelve
+durante `/start-phase`:
+
+1. **Mecánica core** — qué hace el jugador momento a momento (el verbo principal del juego).
+2. **Cámara/perspectiva** — 2D top-down, lateral, isométrico, 3D, etc.
+3. **Condición de victoria/derrota o tipo de loop** — cómo se gana/pierde, o si es un loop
+   infinito tipo arcade/score/supervivencia sin final formal.
+4. **Controles principales** — qué inputs usa el jugador y para qué.
+5. **Qué queda fuera del MVP** — al menos una exclusión explícita de alcance.
+
+Proceso:
+
+1. Lee `<idea>` e intenta **inferir** cada uno de los 5 puntos directamente de lo que escribió el
+   usuario. Si un punto es razonable de asumir (por ejemplo, "un platformer" implica cámara lateral
+   2D), infiérelo sin preguntar — no lo marques como pendiente solo por no estar dicho literal.
+2. Si los 5 puntos quedaron resueltos por inferencia, no preguntes nada y continúa al paso 2.
+3. Si falta uno o más, haz **una sola ronda** de preguntas concretas usando la herramienta de
+   preguntas al usuario, cubriendo únicamente los puntos que faltan (nunca preguntes por algo ya
+   inferido). No hagas una segunda ronda de seguimiento: con las respuestas de esa ronda, resuelve
+   el checklist completo usando tu propio criterio para cualquier detalle menor que quede suelto.
+4. Nunca dejes un punto del checklist sin resolver antes de continuar — si el usuario no contesta
+   algo con precisión, toma la decisión más razonable tú mismo y sigue adelante.
 
 ### 2. Generar `docs/gdd.md`
 
@@ -35,6 +54,13 @@ como velocidades o vidas, no solo descripciones vagas):
 
 ```markdown
 # GDD: <Nombre del juego>
+
+## Checklist de idea lista
+- [x] Mecánica core: <resumen de una línea>
+- [x] Cámara/perspectiva: <resumen de una línea>
+- [x] Condición de victoria/derrota o loop: <resumen de una línea>
+- [x] Controles principales: <resumen de una línea>
+- [x] Fuera del MVP: <resumen de una línea>
 
 ## Pilares de diseño
 (3-5 frases que definen qué hace único a este juego y qué NO es)
