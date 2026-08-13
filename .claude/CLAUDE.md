@@ -9,7 +9,8 @@ del juego vive en `docs/`.
 - `docs/gdd.md` — diseño del juego. Nunca se contradice al implementar; si algo no está claro, se
   actualiza el GDD primero.
 - `docs/todo.md` — fases de desarrollo, cada una con checklist de tareas (`- [ ]` / `- [x]`).
-- `docs/test-cases.md` — casos de prueba por fase, mapeados 1:1 a tests de GUT.
+- `docs/test-cases.md` — historias testables por fase (afirmaciones desde la perspectiva del
+  jugador, pero 100% verificables por código), mapeadas 1:1 a tests de GUT.
 
 ## Estructura de `game/`
 

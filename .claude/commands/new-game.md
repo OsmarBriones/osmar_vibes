@@ -114,17 +114,27 @@ Crea (o sobrescribe) `docs/todo.md` con fases numeradas. Reglas obligatorias:
 ### 4. Generar `docs/test-cases.md`
 
 Crea (o sobrescribe) `docs/test-cases.md`. Por cada fase de `todo.md`, define los casos de prueba
-automatizados (GUT) que confirman que la fase está terminada. Formato:
+automatizados (GUT) que confirman que la fase está terminada, redactados como **historias
+testables**: una afirmación en primera persona desde la perspectiva del jugador, que además sea
+100% verificable por código. Formato:
 
 ```markdown
 # Test Cases
 
 ## Fase 1: Vertical slice jugable
-- [ ] `test_<nombre>`: descripción de qué verifica y cuál es el resultado esperado
+- [ ] Como jugador, <afirmación observable> → `test_<nombre>`
 ```
 
-Cada test case debe ser algo verificable por código (estado de una variable, valor de retorno,
-señal emitida, nodo presente en la escena), no "se ve bien" o "se siente bien".
+Ejemplo: `Como jugador, al mover la paleta hacia la derecha, su posición X aumenta →
+test_paddle_moves_right`.
+
+Reglas para cada historia testable:
+- Debe leerse como intención de diseño (qué puede hacer o percibir el jugador), no como detalle de
+  implementación interna.
+- Debe ser 100% verificable por código (estado de una variable, valor de retorno, señal emitida,
+  nodo presente en la escena) — nunca algo subjetivo como "se ve bien" o "se siente bien". Si una
+  idea de test cae en lo subjetivo, no la incluyas aquí: eso se valida jugando, no con GUT.
+- Mapea 1:1 con un método `test_*` en `game/tests/unit/`.
 
 ### 5. Resumen final
 
