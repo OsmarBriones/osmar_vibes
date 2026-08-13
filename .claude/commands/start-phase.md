@@ -34,9 +34,10 @@ nunca la marques como completada vos mismo.
 ### 2. Implementar
 
 Implementa cada tarea pendiente de la fase en `game/`, siguiendo la estructura de carpetas de
-`.claude/CLAUDE.md` y, sin excepción, el estilo de código de `docs/coding-standards.md`. Consulta
-`docs/gdd.md` cuando necesites detalles de diseño (valores, comportamiento esperado, etc.) en vez
-de inventarlos.
+`.claude/CLAUDE.md`, el criterio de sistemas de `docs/ARCHITECTURE.md` (manager global vs
+componente por entidad, según corresponda a lo que esa tarea toca) y, sin excepción, el estilo de
+código de `docs/coding-standards.md`. Consulta `docs/gdd.md` cuando necesites detalles de diseño
+(valores, comportamiento esperado, etc.) en vez de inventarlos.
 
 No implementes tareas de fases futuras todavía, aunque sea tentador.
 
@@ -80,9 +81,10 @@ todos pasen. No avances al siguiente paso con tests en rojo.
 ### 5. Revisión de estilo
 
 Antes de tocar los checklists o commitear, revisa el diff de esta fase (`game/` solamente) contra
-`docs/coding-standards.md` punto por punto. Los tests validan comportamiento, no estilo — esta
-revisión es la única que atrapa violaciones de tipado, nomenclatura, orden de miembros, uso de
-señales/autoloads, etc. Presta especial atención a las dos reglas duras del documento: ningún
+`docs/coding-standards.md` y `docs/ARCHITECTURE.md` punto por punto. Los tests validan
+comportamiento, no estilo ni arquitectura — esta revisión es la única que atrapa violaciones de
+tipado, nomenclatura, orden de miembros, uso de señales/autoloads, o un sistema construido con el
+patrón equivocado (componente que debía ser autoload, o viceversa). Presta especial atención a las dos reglas duras del documento: ningún
 archivo `.gd` tocado en esta fase supera 100 caracteres por línea ni 300 líneas totales — si un
 archivo pasa el límite de líneas, separalo en módulos según responsabilidad antes de continuar,
 no lo dejes pasar. Corrige cualquier violación que encuentres y vuelve a correr los tests del

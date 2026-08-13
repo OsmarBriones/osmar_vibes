@@ -47,6 +47,7 @@ docs/
   todo.md              # fases de desarrollo (generado por /new-game)
   test-cases.md        # casos de prueba por fase (generado por /new-game)
   coding-standards.md  # el estilo de código GDScript del proyecto
+  ARCHITECTURE.md      # cómo se descompone el juego en sistemas (autoload vs componente)
   blockers.md          # (opcional) ambigüedades del GDD que /start-phase no pudo resolver solo
 ```
 
