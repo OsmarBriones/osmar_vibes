@@ -1,0 +1,18 @@
+{
+  // Qué review-*.md corre /review-all, por nombre de archivo sin extensión.
+  // Si se omite, queda vacía, o el archivo completo falta/está mal formado: corren TODOS los
+  // review-*.md que existan en .claude/commands/ (default).
+  // Reviewers disponibles hoy: "review-architecture", "review-coding-standards", "review-docs".
+  "reviewers_activos": ["review-architecture", "review-coding-standards", "review-docs"],
+
+  // Cuántas veces reintenta /start-phase tras un commit RECHAZADO antes de parar y pedir
+  // intervención humana, en vez de reintentar indefinidamente. Default si falta: 5.
+  "max_intentos": 5,
+
+  // Qué tan estricto es el veredicto de cada reviewer:
+  //   "cualquier-hallazgo" (default) -> cualquier hallazgo, grave o menor, rechaza el commit.
+  //   "solo-reglas-duras"            -> solo hallazgos graves (reglas duras, correctitud,
+  //                                      incongruencias que bloquean fases) rechazan; los menores
+  //                                      quedan como advertencia sin bloquear.
+  "estrictez": "cualquier-hallazgo"
+}

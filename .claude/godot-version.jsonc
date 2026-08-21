@@ -1,0 +1,13 @@
+{
+  // Versión de Godot a instalar/verificar cuando game/project.godot todavía no existe (repo
+  // recién clonado, antes de correr /new-game). Una vez que game/project.godot existe,
+  // /setup-godot usa la versión declarada ahí (config/features) en su lugar — este valor deja
+  // de aplicar en ese caso.
+  //
+  // Formato: "<major>.<minor>" (sin "-stable", sin patch). Debe ser una versión estable publicada
+  // en https://github.com/godotengine/godot/releases.
+  //
+  // Esta es la ÚNICA fuente de este valor por defecto en el template — no lo dupliques
+  // hardcodeado en otro comando ni doc.
+  "version_default": "4.7"
+}
